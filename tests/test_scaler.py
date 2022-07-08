@@ -1,6 +1,6 @@
 import pytest
-from dsptools.core import minmax_scaler
-from dsptools.core import minmax_scaler_array
+from dsptool.core import minmax_scaler
+from dsptool.core import minmax_scaler_array
 
 
 # test negative
