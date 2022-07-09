@@ -4,4 +4,4 @@ test:
 
 .PHONY: bump2version
 bump2version:
-	bump2version --no-commit --no-tag $(STEP)
+	bump2version $(STEP)
