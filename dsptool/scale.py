@@ -8,7 +8,11 @@ def minmax_scaler(value, oldmin, oldmax, newmin=0.0, newmax=1.0) -> float:
         raise ValueError('newmin should be less than newmax')
     if not oldmin <= value <= oldmax:
         raise ValueError('value should be oldmin <= value <= oldmax')
-    return (value - oldmin) * (newmax - newmin) / (oldmax - oldmin) + newmin
+
+    old_settings = np.seterr(over='raise')
+    out = (value - oldmin) * (newmax - newmin) / (oldmax - oldmin) + newmin
+    np.seterr(**old_settings)
+    return out
 
 
 def minmax_scaler_array(a: np.ndarray, newmin: float = 0, newmax: float = 1) -> np.ndarray:
