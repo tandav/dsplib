@@ -25,7 +25,8 @@ def test_chunkify_signal():
 
 def test_make_windows():
     a = np.arange(7)
-    windows = make_windows(a, sizes=(3, 4, 5))
+    sizes = 3, 4, 5
+    windows = make_windows(a, sizes)
     expected = [
         np.array([
             [2, 3, 4],
@@ -44,3 +45,6 @@ def test_make_windows():
         ]),
     ]
     assert all(np.array_equal(w, e) for w, e in zip(windows, expected))
+
+    for window, w_size in zip(windows, sizes, strict=True):
+        assert window.shape == (a.shape[0] - max(sizes) + 1, w_size)
