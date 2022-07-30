@@ -2,7 +2,7 @@ pipeline:
   test:
     image: python:latest
     commands:
-      - python -m pip install -r requirements.txt
+      - python -m pip install -e .
       - python -m pip install -r requirements-dev.txt
       - make test
 
