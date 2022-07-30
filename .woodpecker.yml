@@ -15,7 +15,7 @@ pipeline:
     commands:
       - python -m pip install --upgrade setuptools build twine
       - python -m build --sdist --outdir dist/ .
-      - python -m twine upload --password ${PYPI_API_TOKEN} dist/*
+      - python -m twine upload dist/* --username __token__ --password $PYPI_API_TOKEN
 
 #    image: plugins/pypi
 #    settings:
