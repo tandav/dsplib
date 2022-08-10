@@ -1,4 +1,4 @@
-[![status-badge](https://woodpecker.tandav.me/api/badges/tandav/dsptool/status.svg)](https://woodpecker.tandav.me/tandav/dsptool)
+[![status-badge](https://woodpecker.tandav.me/api/badges/bhairava/dsptool/status.svg)](https://woodpecker.tandav.me/bhairava/dsptool)
 
 # dsptool
 ```sh
