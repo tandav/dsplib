@@ -44,7 +44,7 @@ class CircularBuffer:
 
     def most_recent(self, n: int):
         if n > self.size:
-            raise ValueError('n cant be greater than size')
+            raise ValueError(f'n cant be greater than size {n} > {self.size}')
         if n <= self.index:
             return self.buffer[self.index - n:self.index]
         return np.hstack((self.buffer[-(n - self.index):], self.buffer[:self.index]))
