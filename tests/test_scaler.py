@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from dsptool.scale import minmax_scaler, minmax_scaler_array
+from dsptool.scale import minmax_scaler
 
 
 @pytest.mark.parametrize(
@@ -21,18 +21,19 @@ from dsptool.scale import minmax_scaler, minmax_scaler_array
 )
 def test_min_less_than_max(value, oldmin, oldmax, newmin, newmax):
     with pytest.raises(ValueError):
-        assert minmax_scaler(value, oldmin, oldmax, newmin, newmax)
+        minmax_scaler(value, oldmin, oldmax, newmin, newmax)
 
 
 @pytest.mark.parametrize(
     'value, oldmin, oldmax, newmin, newmax', [
         (101, 0, 100, 0.0, 1.0),
         (-1, 0, 100, 0.0, 1.0),
+        (np.linspace(0, 5), 0, 2, 0, 1),
     ],
 )
 def test_value_inside_bounds(value, oldmin, oldmax, newmin, newmax):
     with pytest.raises(ValueError):
-        assert minmax_scaler(value, oldmin, oldmax, newmin, newmax)
+        minmax_scaler(value, oldmin, oldmax, newmin, newmax)
 
 
 @pytest.mark.parametrize('swap_old_new', [False, True])
@@ -59,14 +60,14 @@ def test_minmax_scaler(value, oldmin, oldmax, newmin, newmax, expected, swap_old
 
 
 def test_minmax_scaler_array():
+    a = np.linspace(0, 100, 11)
     assert np.allclose(
-        minmax_scaler_array(
-            np.linspace(0, 100, 11),
-        ), np.linspace(0, 1, 11),
+        minmax_scaler(a, np.min(a), np.max(a)),
+        np.linspace(0, 1, 11),
     )
 
 
 def test_np_dtype_overflow_check():
     a = np.array([0, 100, -120], dtype=np.int8)
     with pytest.raises(FloatingPointError):
-        minmax_scaler_array(a)
+        minmax_scaler(a, np.min(a), np.max(a))
