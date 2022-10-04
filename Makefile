@@ -4,4 +4,4 @@ test:
 
 .PHONY: bump2version
 bump2version:
-	bump2version $(STEP)
+	bump2version $(PART)
