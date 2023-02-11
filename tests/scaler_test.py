@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from dsptool.scale import minmax_scaler
+from dsplib.scale import minmax_scaler
 
 
 @pytest.mark.parametrize(

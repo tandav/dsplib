@@ -1,7 +1,8 @@
 .PHONY: test
 test:
-	python -m pytest -s -vv tests
+	pytest
 
-.PHONY: bump2version
-bump2version:
-	bump2version $(PART)
+.PHONY: bumpver
+bumpver:
+	# usage: make bumpver PART=minor
+	bumpver update --no-fetch --$(PART)

@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from dsptool.circular_buffer import CircularBuffer
+from dsplib.circular_buffer import CircularBuffer
 
 
 def test_append():

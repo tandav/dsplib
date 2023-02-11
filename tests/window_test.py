@@ -1,7 +1,8 @@
 import numpy as np
 import pytest
 
-from dsptool.window import chunkify, make_windows
+from dsplib.window import chunkify
+from dsplib.window import make_windows
 
 
 @pytest.mark.xfail

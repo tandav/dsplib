@@ -1,6 +1,7 @@
-[![Build Status](https://drone.tandav.me/api/badges/bhairava/dsptool/status.svg)](https://drone.tandav.me/bhairava/dsptool)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/tandav/dsplib)
 
-# dsptool
+# dsplib
+
 ```sh
-pip install dsptool
+pip install dsplib
 ```
