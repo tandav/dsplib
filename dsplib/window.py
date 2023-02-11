@@ -34,11 +34,11 @@ def make_windows(a: np.ndarray, sizes: tuple[int, ...]) -> list[np.ndarray]:
     #     )
 
     # single sliding_window_view and slices
-    sizes = sorted(sizes)
+    _sizes = sorted(sizes)
     max_window = np.lib.stride_tricks.sliding_window_view(
         a, window_shape=sizes[-1],
     )
-    for w_size in sizes:
+    for w_size in _sizes:
         windows.append(max_window[:, -w_size:])
 
     return windows

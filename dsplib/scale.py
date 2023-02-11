@@ -1,7 +1,13 @@
 import numpy as np
 
 
-def minmax_scaler(value: float | np.ndarray, oldmin, oldmax, newmin=0.0, newmax=1.0) -> float | np.ndarray:
+def minmax_scaler(
+    value: float | np.ndarray,
+    oldmin: float,
+    oldmax: float,
+    newmin: float = 0.0,
+    newmax: float = 1.0,
+) -> float | np.ndarray:
     if not oldmin < oldmax:
         raise ValueError('oldmin should be less than oldmax')
     if not newmin < newmax:

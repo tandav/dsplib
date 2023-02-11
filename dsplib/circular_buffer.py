@@ -7,7 +7,8 @@ class CircularBuffer:
     """
 
     def __init__(
-        self, size: int | None = None,
+        self,
+        size: int | None = None,
         dtype: type = np.float32,
         index: int = 0,
         buffer: np.ndarray | None = None,
@@ -22,11 +23,11 @@ class CircularBuffer:
             self.buffer = np.zeros(size, dtype=dtype)
             self.size = size
 
-    def append(self, v):
+    def append(self, v: float) -> None:
         self.buffer[self.index] = v
         self.index = (self.index + 1) % self.size
 
-    def extend(self, x: np.ndarray):
+    def extend(self, x: np.ndarray) -> None:
         l = x.shape[0]
         if l <= self.size:
             if self.index + l < self.size:
@@ -42,7 +43,7 @@ class CircularBuffer:
             self.buffer[q:] = x[-self.size:-q]
         self.index = (self.index + l) % self.size
 
-    def most_recent(self, n: int):
+    def most_recent(self, n: int) -> np.ndarray:
         if n > self.size:
             raise ValueError(f'n cant be greater than size {n} > {self.size}')
         if n <= self.index:
