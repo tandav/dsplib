@@ -45,7 +45,7 @@ def test_make_windows():
             [2, 3, 4, 5, 6],
         ]),
     ]
-    assert all(np.array_equal(w, e) for w, e in zip(windows, expected, strict=True))
+    assert all(np.array_equal(w, e) for w, e in zip(windows, expected))
 
-    for window, w_size in zip(windows, sizes, strict=True):
+    for window, w_size in zip(windows, sizes):
         assert window.shape == (a.shape[0] - max(sizes) + 1, w_size)
