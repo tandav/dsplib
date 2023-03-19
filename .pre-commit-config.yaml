@@ -1,12 +1,6 @@
-
-
-
-
-
-exclude: _archive
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.3.0
     hooks:
       - id: check-added-large-files
       - id: check-yaml
@@ -27,36 +21,52 @@ repos:
       - id: requirements-txt-fixer
 
   - repo: https://github.com/asottile/add-trailing-comma
-    rev: v2.4.0
+    rev: v2.3.0
     hooks:
       - id: add-trailing-comma
 
   - repo: https://github.com/asottile/pyupgrade
-    rev: v3.3.1
+    rev: v3.1.0
     hooks:
       - id: pyupgrade
 
   - repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v2.0.2
+    rev: v1.7.0
     hooks:
       - id: autopep8
 
-  - repo: https://github.com/PyCQA/isort
-    rev: 5.12.0
-    hooks:
-      - id: isort
-
   - repo: https://github.com/PyCQA/autoflake
-    rev: v2.0.1
+    rev: v1.7.6
     hooks:
       - id: autoflake
 
-  - repo: https://github.com/PyCQA/flake8
-    rev: 6.0.0
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.0.254
     hooks:
-      - id: flake8
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+
+  - repo: https://github.com/PyCQA/pylint
+    rev: v2.17.0
+    hooks:
+      - id: pylint
+        additional_dependencies: ["pylint-per-file-ignores"]
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.0.1
+    rev: v0.982
     hooks:
     - id: mypy
+
+  - repo: local
+    hooks:
+      - id: pyright
+        name: pyright
+        entry: pyright
+        types: [ python ]
+        language: system
+        exclude: ^tests/.*\.py$
+
+  # - repo: https://github.com/RobertCraigie/pyright-python
+  #   rev: v1.1.299
+  #   hooks:
+  #   - id: pyright

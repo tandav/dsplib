@@ -14,9 +14,9 @@ def test_chunkify_signal():
     signal = np.arange(20)
     chunked = chunkify(signal, chunk_size=5, n_overlap=2)
     expected = np.array([
-        [0,  1,  2,  3,  4],
-        [3,  4,  5,  6,  7],
-        [6,  7,  8,  9, 10],
+        [0, 1, 2, 3, 4],
+        [3, 4, 5, 6, 7],
+        [6, 7, 8, 9, 10],
         [9, 10, 11, 12, 13],
         [12, 13, 14, 15, 16],
         [15, 16, 17, 18, 19],
@@ -45,7 +45,7 @@ def test_make_windows():
             [2, 3, 4, 5, 6],
         ]),
     ]
-    assert all(np.array_equal(w, e) for w, e in zip(windows, expected))
+    assert all(np.array_equal(w, e) for w, e in zip(windows, expected, strict=True))
 
     for window, w_size in zip(windows, sizes, strict=True):
         assert window.shape == (a.shape[0] - max(sizes) + 1, w_size)
