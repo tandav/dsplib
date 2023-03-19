@@ -1,3 +1,5 @@
+import typing as tp
+
 import numpy as np
 
 
@@ -15,7 +17,7 @@ def chunkify(signal: np.ndarray, chunk_size: int = 256, n_overlap: int = 32) -> 
     return result
 
 
-def make_windows(a: np.ndarray, sizes: tuple[int, ...]) -> list[np.ndarray]:
+def make_windows(a: np.ndarray, sizes: tp.Tuple[int, ...]) -> tp.List[np.ndarray]:
     """TODO: just create window for max size and then use slices [:, -size:] to make smaller windows
         - but it can be slower because slicing returns a copy instead of view
         - or not: https://scipy-cookbook.readthedocs.io/items/ViewsVsCopies.html#Slice-views

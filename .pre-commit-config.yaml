@@ -56,18 +56,3 @@ repos:
     rev: v0.982
     hooks:
     - id: mypy
-
-  - repo: local
-    hooks:
-      - id: pyright
-        name: pyright
-        entry: pyright
-        types: [ python ]
-        language: python
-        exclude: ^tests/.*\.py$
-        additional_dependencies: [ pyright ]
-
-  # - repo: https://github.com/RobertCraigie/pyright-python
-  #   rev: v1.1.299
-  #   hooks:
-  #   - id: pyright
