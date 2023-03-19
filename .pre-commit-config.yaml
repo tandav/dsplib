@@ -63,8 +63,9 @@ repos:
         name: pyright
         entry: pyright
         types: [ python ]
-        language: system
+        language: python
         exclude: ^tests/.*\.py$
+        additional_dependencies: [ pyright ]
 
   # - repo: https://github.com/RobertCraigie/pyright-python
   #   rev: v1.1.299

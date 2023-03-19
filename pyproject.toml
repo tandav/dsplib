@@ -16,7 +16,6 @@ dev = [
     "bumpver",
     "pre-commit",
     "pytest",
-    "pyright",
 ]
 
 [project.urls]
