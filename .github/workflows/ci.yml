@@ -25,7 +25,13 @@ jobs:
       - name: install dependencies
         run: python3 -m pip install -e .[dev]
 
-      - name: test
+      - name: test python-only
+        run: pytest tests/scaler/python_test.py
+
+      - name: install numpy dependencies
+        run: python3 -m pip install -e .[numpy]
+
+      - name: test numpy
         run: pytest
 
   publish-to-pypi-and-github-release:
