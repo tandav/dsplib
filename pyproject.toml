@@ -7,15 +7,16 @@ authors = [
 description = "A set of tools for DSP projects"
 readme = "README.md"
 requires-python = ">=3.8"
-dependencies = [
-    "numpy>=1.15.0",
-]
+dependencies = []
 
 [project.optional-dependencies]
 dev = [
     "bumpver",
     "pre-commit",
     "pytest",
+]
+numpy = [
+    "numpy>=1.15.0",
 ]
 
 [project.urls]
@@ -75,7 +76,7 @@ warn_unreachable = true
 warn_unused_configs = true
 warn_unused_ignores = true
 
-[tool.mypy.overrides]
+[[tool.mypy.overrides]]
 module = ["tests.*"]
 disallow_untyped_defs = false
 
@@ -131,6 +132,7 @@ disable = [
     "unused-variable",
     "too-many-arguments",
     "import-error",
+    "duplicate-code",
 ]
 
 [tool.pylint-per-file-ignores]
