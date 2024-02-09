@@ -2,6 +2,7 @@ import numpy as np
 import pytest
 
 from dsplib.scale import minmax_scaler  # type: ignore
+from dsplib.scale import minmax_scaler_array  # type: ignore
 
 
 @pytest.mark.parametrize(
@@ -21,10 +22,11 @@ def test_value_inside_bounds(value, oldmin, oldmax, newmin, newmax):
     ],
 )
 def test_minmax_scaler_array(a, expected):
-    assert np.allclose(minmax_scaler(a, np.min(a), np.max(a)), expected)
+    assert np.allclose(minmax_scaler_array(a, np.min(a), np.max(a)), expected)
+    assert np.allclose(minmax_scaler_array(a), expected)
 
 
 def test_np_dtype_overflow_check():
     a = np.array([0, 100, -120], dtype=np.int8)
     with pytest.raises(FloatingPointError):
-        minmax_scaler(a, np.min(a), np.max(a))
+        minmax_scaler_array(a, np.min(a), np.max(a))

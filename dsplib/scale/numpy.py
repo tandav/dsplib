@@ -3,28 +3,32 @@ import typing as tp
 import numpy as np
 
 
-def _within_bounds(
-    value: tp.Union[float, np.ndarray],
-    bounds: tp.Tuple[float, float],
+def _within_bounds_array(
+    value: np.ndarray,
+    min_: float,
+    max_: float,
 ) -> bool:
-    a, b = bounds
-    if a == b:
-        return value == a
-    min_, max_ = min(a, b), max(a, b)
-    if isinstance(value, np.ndarray):
-        return bool(np.all((min_ <= value) & (value <= max_)))
-    return min_ <= value <= max_
+    if min_ == max_:
+        return bool(np.all(value == min_))
+    min_, max_ = min(min_, max_), max(min_, max_)
+    return bool(np.all((min_ <= value) & (value <= max_)))
 
 
-def minmax_scaler(
-    value: tp.Union[float, np.ndarray],
-    oldmin: float,
-    oldmax: float,
+def minmax_scaler_array(
+    value: np.ndarray,
+    oldmin: tp.Optional[float] = None,
+    oldmax: tp.Optional[float] = None,
     newmin: float = 0.0,
     newmax: float = 1.0,
-) -> tp.Union[float, np.ndarray]:
+) -> np.ndarray:
 
-    if not _within_bounds(value, (oldmin, oldmax)):
+    if oldmin is None:
+        oldmin = np.min(value)
+
+    if oldmax is None:
+        oldmax = np.max(value)
+
+    if not _within_bounds_array(value, oldmin, oldmax):
         raise ValueError('value should be oldmin <= value <= oldmax')
 
     if oldmin == oldmax:

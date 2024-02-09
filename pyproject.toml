@@ -82,7 +82,7 @@ disallow_untyped_defs = false
 
 # ==============================================================================
 
-[tool.ruff]
+[tool.ruff.lint]
 extend-select = [
     "W",
     "C",
@@ -106,10 +106,10 @@ ignore = [
     "B905",
 ]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "tests/*" = ["S101"]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 force-single-line = true
 
 # ==============================================================================

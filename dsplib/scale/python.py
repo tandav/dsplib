@@ -1,14 +1,11 @@
-import typing as tp
-
-
 def _within_bounds(
     value: float,
-    bounds: tp.Tuple[float, float],
+    min_: float,
+    max_: float,
 ) -> bool:
-    a, b = bounds
-    if a == b:
-        return value == a
-    min_, max_ = min(a, b), max(a, b)
+    if min_ == max_:
+        return value == min_
+    min_, max_ = min(min_, max_), max(min_, max_)
     return min_ <= value <= max_
 
 
@@ -19,7 +16,7 @@ def minmax_scaler(
     newmin: float = 0.0,
     newmax: float = 1.0,
 ) -> float:
-    if not _within_bounds(value, (oldmin, oldmax)):
+    if not _within_bounds(value, oldmin, oldmax):
         raise ValueError('value should be oldmin <= value <= oldmax')
 
     if oldmin == oldmax:
