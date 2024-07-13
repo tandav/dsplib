@@ -43,7 +43,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: '3.12'
 
       - name: Install pypa/build
         run: python -m pip install --upgrade setuptools build twine
@@ -58,4 +58,4 @@ jobs:
         run: python -m twine upload dist/*
 
       - name: Github Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2

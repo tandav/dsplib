@@ -1,0 +1,10 @@
+version: '3'
+
+tasks:
+  test:
+    cmd: pytest
+
+  bumpver:
+    desc: 'Bump version. Pass --<part>. Usage example: task bumpver -- --minor'
+    cmds:
+      - bumpver update --no-fetch {{.CLI_ARGS}}
