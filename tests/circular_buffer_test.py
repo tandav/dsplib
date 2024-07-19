@@ -68,6 +68,7 @@ def test_multiple_extend(index, buffer, data, expected):
         (2, np.array([0, 1, 2, 3, 4]), 2, np.array([0, 1])),
         (2, np.array([0, 1, 2, 3, 4]), 3, np.array([4, 0, 1])),
         (2, np.array([0, 1, 2, 3, 4]), 5, np.array([2, 3, 4, 0, 1])),
+        (2, np.array([0, 1, 2, 3, 4]), None, np.array([2, 3, 4, 0, 1])),
     ],
 )
 def test_most_recent(index, buffer, n, expected):

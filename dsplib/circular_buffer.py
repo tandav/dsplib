@@ -48,9 +48,11 @@ class CircularBuffer:
             self.buffer[q:] = x[-self.size:-q]  # pylint: disable=invalid-unary-operand-type
         self.index = (self.index + l) % self.size
 
-    def most_recent(self, n: int) -> np.ndarray:
-        if n > self.size:
+    def most_recent(self, n: tp.Optional[int] = None) -> np.ndarray:
+        if n is None:
+            n = self.size
+        elif n > self.size:
             raise ValueError(f'n cant be greater than size {n} > {self.size}')
-        if n <= self.index:
+        elif n <= self.index:
             return self.buffer[self.index - n:self.index]
         return np.hstack((self.buffer[-(n - self.index):], self.buffer[:self.index]))
